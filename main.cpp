@@ -1,30 +1,22 @@
-#include <iostream>
-#include <vector>
-
-// Include the protocol implementation
-#include "Protocol.cpp"
+#include "ExtendibleHashing.h"
 
 int main() {
-    try {
-        // Encode a command
-        std::string command = "SET";
-        std::vector<std::string> arguments = {"key", "value"};
+    ExtendibleHashing hashTable(1);
 
-        std::vector<Byte> encodedMessage = encodeCommand(command, arguments);
+    // Insert keys
+    hashTable.insert(1);
+    hashTable.insert(5);
+    hashTable.insert(2);
 
-        std::cout << "Encoded Message: ";
-        for (Byte b : encodedMessage) {
-            printf("%02X ", b);
-        }
-        std::cout << std::endl;
+    // Search for keys
+    hashTable.search(1);
+    hashTable.search(10);
 
-        // Decode the message
-        std::cout << "\nDecoded Message:" << std::endl;
-        decodeCommand(encodedMessage);
+    // Mark a key for deletion
+    hashTable.remove(5);
 
-    } catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+    // Print the hash table
+    hashTable.print();
 
     return 0;
 }
