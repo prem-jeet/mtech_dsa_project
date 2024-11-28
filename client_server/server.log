@@ -1,0 +1,32 @@
+[2024-11-28 05:45:49] Received Command: SET
+Arguments: key1 value1 
+[2024-11-28 05:45:49] Hash Table After SET:
+
+Global Depth: 1
+Directory:
+  Index 0 -> Bucket [Keys: key1 ] (Local Depth: 1)
+  Index 1 -> Bucket [Keys: key1 ] (Local Depth: 1)
+[2024-11-28 05:45:49] Response: SET operation successful
+
+[2024-11-28 05:45:49] Received Command: GET
+Arguments: key1 
+[2024-11-28 05:45:49] Response: GET operation successful: value1
+
+[2024-11-28 05:45:49] Received Command: DEL
+Arguments: key1 
+[2024-11-28 05:45:49] Response: DEL operation acknowledged
+
+[2024-11-28 05:45:49] Received Command: SET
+Arguments: key2 value2 
+[2024-11-28 05:45:49] Hash Table After SET:
+
+Global Depth: 1
+Directory:
+  Index 0 -> Bucket [Keys: key2 key1 ] (Local Depth: 1)
+  Index 1 -> Bucket [Keys: key2 key1 ] (Local Depth: 1)
+[2024-11-28 05:45:49] Response: SET operation successful
+
+[2024-11-28 05:45:49] Received Command: GET
+Arguments: key2 
+[2024-11-28 05:45:49] Response: GET operation successful: value2
+
