@@ -1,0 +1,104 @@
+[2024-11-28 08:31:44] Received Command: SET
+Arguments: key1 value1 key2 value2 key3 value3 
+[2024-11-28 08:31:44] Inserted: Key = key1, Value = value1
+[2024-11-28 08:31:44] Inserted: Key = key2, Value = value2
+[2024-11-28 08:31:44] Inserted: Key = key3, Value = value3
+[2024-11-28 08:31:44] Hash Table After SET:
+
+Global Depth: 2
+Directory:
+  Index 00 -> Bucket [Keys: key3 ] (Local Depth: 2)
+  Index 01 -> Bucket [Keys: key3 ] (Local Depth: 2)
+  Index 10 -> Bucket [Keys: key2 key1 ] (Local Depth: 2)
+  Index 11 -> Bucket [Keys: key2 key1 ] (Local Depth: 2)
+[2024-11-28 08:31:44] Response: SET operation successful
+
+[2024-11-28 08:31:44] Received Command: GET
+Arguments: key1 
+[2024-11-28 08:31:44] Response: GET operation successful: value1
+
+[2024-11-28 08:31:44] Received Command: GET
+Arguments: key2 
+[2024-11-28 08:31:44] Response: GET operation successful: value2
+
+[2024-11-28 08:31:44] Received Command: DEL
+Arguments: key2 
+[2024-11-28 08:31:44] Deleting key: key2
+[2024-11-28 08:31:44] Hash Table After DEL:
+
+Global Depth: 2
+Directory:
+  Index 00 -> Bucket [Keys: key3 ] (Local Depth: 2)
+  Index 01 -> Bucket [Keys: key3 ] (Local Depth: 2)
+  Index 10 -> Bucket [Keys: key1 ] (Local Depth: 2)
+  Index 11 -> Bucket [Keys: key1 ] (Local Depth: 2)
+[2024-11-28 08:31:44] Response: DEL operation acknowledged
+
+[2024-11-28 08:31:44] Received Command: GET
+Arguments: key2 
+[2024-11-28 08:31:44] Response: Error: Key not found
+
+[2024-11-28 08:31:44] Received Command: SET
+Arguments: key4 value4 
+[2024-11-28 08:31:44] Inserted: Key = key4, Value = value4
+[2024-11-28 08:31:44] Hash Table After SET:
+
+Global Depth: 2
+Directory:
+  Index 00 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
+  Index 01 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
+  Index 10 -> Bucket [Keys: key1 ] (Local Depth: 2)
+  Index 11 -> Bucket [Keys: key1 ] (Local Depth: 2)
+[2024-11-28 08:31:44] Response: SET operation successful
+
+[2024-11-28 08:31:44] Received Command: GET
+Arguments: key4 
+[2024-11-28 08:31:44] Response: GET operation successful: value4
+
+[2024-11-28 08:31:44] Received Command: SET
+Arguments: key5 value5 key6 value6 
+[2024-11-28 08:31:44] Inserted: Key = key5, Value = value5
+[2024-11-28 08:31:44] Inserted: Key = key6, Value = value6
+[2024-11-28 08:31:44] Hash Table After SET:
+
+Global Depth: 3
+Directory:
+  Index 000 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
+  Index 001 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
+  Index 010 -> Bucket [Keys: key5 ] (Local Depth: 3)
+  Index 011 -> Bucket [Keys: key5 ] (Local Depth: 3)
+  Index 100 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
+  Index 101 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
+  Index 110 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 111 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+[2024-11-28 08:31:44] Response: SET operation successful
+
+[2024-11-28 08:31:44] Received Command: GET
+Arguments: key5 
+[2024-11-28 08:31:44] Response: GET operation successful: value5
+
+[2024-11-28 08:31:44] Received Command: GET
+Arguments: key6 
+[2024-11-28 08:31:44] Response: GET operation successful: value6
+
+[2024-11-28 08:31:44] Received Command: DEL
+Arguments: key6 
+[2024-11-28 08:31:44] Deleting key: key6
+[2024-11-28 08:31:44] Hash Table After DEL:
+
+Global Depth: 3
+Directory:
+  Index 000 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
+  Index 001 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
+  Index 010 -> Bucket [Keys: key5 ] (Local Depth: 3)
+  Index 011 -> Bucket [Keys: key5 ] (Local Depth: 3)
+  Index 100 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
+  Index 101 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
+  Index 110 -> Bucket [Keys: key1 ] (Local Depth: 3)
+  Index 111 -> Bucket [Keys: key1 ] (Local Depth: 3)
+[2024-11-28 08:31:44] Response: DEL operation acknowledged
+
+[2024-11-28 08:31:44] Received Command: GET
+Arguments: key6 
+[2024-11-28 08:31:44] Response: Error: Key not found
+

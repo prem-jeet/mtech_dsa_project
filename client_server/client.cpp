@@ -54,6 +54,10 @@ int main()
     std::string line;
     while (std::getline(file, line))
     {
+        if (line.empty()) {
+            continue; // Skip empty lines
+        }
+
         std::istringstream iss(line);
         std::string command;
         std::vector<std::string> args;

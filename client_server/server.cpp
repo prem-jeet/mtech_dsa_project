@@ -133,7 +133,16 @@ int main() {
                 if (args.size() < 1) {
                     response = "Error: DEL requires a key";
                 } else {
+                    logFile << "[" << getCurrentTimestamp() << "] Deleting key: " << args[0] << "\n";
                     hashTable.remove(args[0]);
+
+                    // Log hash table state after DELETE
+                    logFile << "[" << getCurrentTimestamp() << "] Hash Table After DEL:\n";
+                    std::streambuf* originalCout = std::cout.rdbuf();
+                    std::cout.rdbuf(logFile.rdbuf());
+                    hashTable.print();
+                    std::cout.rdbuf(originalCout);
+
                     response = "DEL operation acknowledged";
                 }
             } else {
