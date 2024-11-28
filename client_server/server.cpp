@@ -98,23 +98,24 @@ int main() {
             logFile << "\n";
 
             if (command == "SET") {
-                if (args.size() < 2) {
-                    response = "Error: SET requires a key and a value";
+                if (args.size() % 2 != 0) {
+                    response = "Error: SET requires an even number of arguments (key-value pairs)";
                 } else {
-                    hashTable.insert(args[0], args[1]);
+                    for (size_t i = 0; i < args.size(); i += 2) {
+                        std::string key = args[i];
+                        std::string value = args[i + 1];
+                        hashTable.insert(key, value);
+
+                        logFile << "[" << getCurrentTimestamp() << "] Inserted: Key = " << key << ", Value = " << value << "\n";
+                    }
+
                     response = "SET operation successful";
 
                     // Log hash table state after SET
                     logFile << "[" << getCurrentTimestamp() << "] Hash Table After SET:\n";
-
-                    // Redirect std::cout to the log file temporarily
                     std::streambuf* originalCout = std::cout.rdbuf();
                     std::cout.rdbuf(logFile.rdbuf());
-
-                    // Print the hash table to the log file
                     hashTable.print();
-
-                    // Restore original std::cout
                     std::cout.rdbuf(originalCout);
                 }
             } else if (command == "GET") {

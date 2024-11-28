@@ -1,5 +1,12 @@
-SET key1 value1
+SET key1 value1 key2 value2 key3 value3
 GET key1
-DEL key1
-SET key2 value2
 GET key2
+DEL key2
+GET key2
+SET key4 value4
+GET key4
+SET key5 value5 key6 value6
+GET key5
+GET key6
+DEL key6
+GET key6
