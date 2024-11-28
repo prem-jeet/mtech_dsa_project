@@ -1,31 +1,31 @@
 #include "ExtendibleHashing.h"
+#include <iostream>
 
 int main() {
     ExtendibleHashing hashTable(1);
 
-    // Insert key-value pairs
-    hashTable.insert("key1", "Value1");
-    hashTable.insert("key2", "Value2");
-    hashTable.insert("key3", "Value3");
+    // Insert keys to grow depth to 3 bits
+    hashTable.insert("key1", "value1");
+    hashTable.insert("key2", "value2");
+    hashTable.insert("key3", "value3");
+    hashTable.insert("key4", "value4");
+    hashTable.insert("key5", "value5");
+    hashTable.insert("key6", "value6");
+    hashTable.insert("key7", "value7");
 
-    // Search for keys
-    std::string value;
-    if (hashTable.search("key1", value)) {
-        std::cout << "Key key1 found with value: " << value << "\n";
-    } else {
-        std::cout << "Key key1 not found.\n";
-    }
+    // Print after inserts
+    std::cout << "After growing depth to 3 bits:\n";
+    hashTable.print();
 
-    if (hashTable.search("key10", value)) {
-        std::cout << "Key key10 found with value: " << value << "\n";
-    } else {
-        std::cout << "Key key10 not found.\n";
-    }
+    // Remove keys to shrink depth back to 2 bits
+    hashTable.remove("key4");
+    hashTable.remove("key5");
+    hashTable.remove("key6");
+    hashTable.remove("key1");
 
-    // Remove a key
-    hashTable.remove("key2");
 
-    // Print the hash table
+    // Print after removals
+    std::cout << "After shrinking depth back to 2 bits:\n";
     hashTable.print();
 
     return 0;

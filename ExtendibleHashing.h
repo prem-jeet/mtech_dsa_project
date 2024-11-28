@@ -34,6 +34,7 @@ private:
 
     int hash(const std::string& key); // Hash function
     void splitBucket(int index); // Split a bucket when it's full
+    int flipLastBit(int index, int depth); // Get the buddy index
 
 public:
     ExtendibleHashing(int depth);  // Constructor
