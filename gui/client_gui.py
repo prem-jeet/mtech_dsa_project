@@ -108,7 +108,7 @@ class ClientGUI:
 
             # Receive and decode the response using protocol.decode_response
             response = self.client_socket.recv(1024)
-            status, message = protocol.decode_response(response.decode("utf-8"))
+            status, message = protocol.decode_response(response)
             self.response_text.insert("end", f"Command: {operation} {args}\nStatus: {status}\nMessage: {message}\n\n")
             self.response_text.yview("end")  # Auto-scroll to the end
         except Exception as e:

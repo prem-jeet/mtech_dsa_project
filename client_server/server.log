@@ -1,104 +1,194 @@
-[2024-11-28 08:31:44] Received Command: SET
-Arguments: key1 value1 key2 value2 key3 value3 
-[2024-11-28 08:31:44] Inserted: Key = key1, Value = value1
-[2024-11-28 08:31:44] Inserted: Key = key2, Value = value2
-[2024-11-28 08:31:44] Inserted: Key = key3, Value = value3
-[2024-11-28 08:31:44] Hash Table After SET:
-
-Global Depth: 2
-Directory:
-  Index 00 -> Bucket [Keys: key3 ] (Local Depth: 2)
-  Index 01 -> Bucket [Keys: key3 ] (Local Depth: 2)
-  Index 10 -> Bucket [Keys: key2 key1 ] (Local Depth: 2)
-  Index 11 -> Bucket [Keys: key2 key1 ] (Local Depth: 2)
-[2024-11-28 08:31:44] Response: SET operation successful
-
-[2024-11-28 08:31:44] Received Command: GET
-Arguments: key1 
-[2024-11-28 08:31:44] Response: GET operation successful: value1
-
-[2024-11-28 08:31:44] Received Command: GET
-Arguments: key2 
-[2024-11-28 08:31:44] Response: GET operation successful: value2
-
-[2024-11-28 08:31:44] Received Command: DEL
-Arguments: key2 
-[2024-11-28 08:31:44] Deleting key: key2
-[2024-11-28 08:31:44] Hash Table After DEL:
-
-Global Depth: 2
-Directory:
-  Index 00 -> Bucket [Keys: key3 ] (Local Depth: 2)
-  Index 01 -> Bucket [Keys: key3 ] (Local Depth: 2)
-  Index 10 -> Bucket [Keys: key1 ] (Local Depth: 2)
-  Index 11 -> Bucket [Keys: key1 ] (Local Depth: 2)
-[2024-11-28 08:31:44] Response: DEL operation acknowledged
-
-[2024-11-28 08:31:44] Received Command: GET
-Arguments: key2 
-[2024-11-28 08:31:44] Response: Error: Key not found
-
-[2024-11-28 08:31:44] Received Command: SET
-Arguments: key4 value4 
-[2024-11-28 08:31:44] Inserted: Key = key4, Value = value4
-[2024-11-28 08:31:44] Hash Table After SET:
-
-Global Depth: 2
-Directory:
-  Index 00 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
-  Index 01 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
-  Index 10 -> Bucket [Keys: key1 ] (Local Depth: 2)
-  Index 11 -> Bucket [Keys: key1 ] (Local Depth: 2)
-[2024-11-28 08:31:44] Response: SET operation successful
-
-[2024-11-28 08:31:44] Received Command: GET
-Arguments: key4 
-[2024-11-28 08:31:44] Response: GET operation successful: value4
-
-[2024-11-28 08:31:44] Received Command: SET
-Arguments: key5 value5 key6 value6 
-[2024-11-28 08:31:44] Inserted: Key = key5, Value = value5
-[2024-11-28 08:31:44] Inserted: Key = key6, Value = value6
-[2024-11-28 08:31:44] Hash Table After SET:
+[2024-11-28 08:37:05] Received Command: SET
+Arguments: key1 val1 key2 val2 key3 val3 key4 val4 key5 val5 
+[2024-11-28 08:37:05] Inserted: Key = key1, Value = val1
+[2024-11-28 08:37:05] Inserted: Key = key2, Value = val2
+[2024-11-28 08:37:05] Inserted: Key = key3, Value = val3
+[2024-11-28 08:37:05] Inserted: Key = key4, Value = val4
+[2024-11-28 08:37:05] Inserted: Key = key5, Value = val5
+[2024-11-28 08:37:05] Hash Table After SET:
 
 Global Depth: 3
 Directory:
   Index 000 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
   Index 001 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
-  Index 010 -> Bucket [Keys: key5 ] (Local Depth: 3)
-  Index 011 -> Bucket [Keys: key5 ] (Local Depth: 3)
-  Index 100 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
-  Index 101 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
-  Index 110 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
-  Index 111 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
-[2024-11-28 08:31:44] Response: SET operation successful
-
-[2024-11-28 08:31:44] Received Command: GET
-Arguments: key5 
-[2024-11-28 08:31:44] Response: GET operation successful: value5
-
-[2024-11-28 08:31:44] Received Command: GET
-Arguments: key6 
-[2024-11-28 08:31:44] Response: GET operation successful: value6
-
-[2024-11-28 08:31:44] Received Command: DEL
-Arguments: key6 
-[2024-11-28 08:31:44] Deleting key: key6
-[2024-11-28 08:31:44] Hash Table After DEL:
-
-Global Depth: 3
-Directory:
-  Index 000 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
-  Index 001 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
-  Index 010 -> Bucket [Keys: key5 ] (Local Depth: 3)
-  Index 011 -> Bucket [Keys: key5 ] (Local Depth: 3)
+  Index 010 -> Bucket [Keys: key5 key2 ] (Local Depth: 3)
+  Index 011 -> Bucket [Keys: key5 key2 ] (Local Depth: 3)
   Index 100 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
   Index 101 -> Bucket [Keys: key4 key3 ] (Local Depth: 2)
   Index 110 -> Bucket [Keys: key1 ] (Local Depth: 3)
   Index 111 -> Bucket [Keys: key1 ] (Local Depth: 3)
-[2024-11-28 08:31:44] Response: DEL operation acknowledged
+[2024-11-28 08:37:05] Response: SET operation successful
 
-[2024-11-28 08:31:44] Received Command: GET
-Arguments: key6 
-[2024-11-28 08:31:44] Response: Error: Key not found
+[2024-11-28 08:37:27] Received Command: SET
+Arguments: key1 val1 key2 val2 key3 val3 key4 val4 key5 val5 key6 val6 key7 val7 
+[2024-11-28 08:37:27] Inserted: Key = key1, Value = val1
+[2024-11-28 08:37:27] Inserted: Key = key2, Value = val2
+[2024-11-28 08:37:27] Inserted: Key = key3, Value = val3
+[2024-11-28 08:37:27] Inserted: Key = key4, Value = val4
+[2024-11-28 08:37:27] Inserted: Key = key5, Value = val5
+[2024-11-28 08:37:27] Inserted: Key = key6, Value = val6
+[2024-11-28 08:37:27] Inserted: Key = key7, Value = val7
+[2024-11-28 08:37:27] Hash Table After SET:
+
+Global Depth: 6
+Directory:
+  Index 000000 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 000001 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 000010 -> Bucket [Keys: ] (Local Depth: 4)
+  Index 000011 -> Bucket [Keys: ] (Local Depth: 4)
+  Index 000100 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 000101 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 000110 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 000111 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 001000 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 001001 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 001010 -> Bucket [Keys: ] (Local Depth: 5)
+  Index 001011 -> Bucket [Keys: ] (Local Depth: 5)
+  Index 001100 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 001101 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 001110 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 001111 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 010000 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 010001 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 010010 -> Bucket [Keys: ] (Local Depth: 4)
+  Index 010011 -> Bucket [Keys: ] (Local Depth: 4)
+  Index 010100 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 010101 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 010110 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 010111 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 011000 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 011001 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 011010 -> Bucket [Keys: key5 ] (Local Depth: 6)
+  Index 011011 -> Bucket [Keys: key5 ] (Local Depth: 6)
+  Index 011100 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 011101 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 011110 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 011111 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 100000 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 100001 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 100010 -> Bucket [Keys: ] (Local Depth: 4)
+  Index 100011 -> Bucket [Keys: ] (Local Depth: 4)
+  Index 100100 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 100101 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 100110 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 100111 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 101000 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 101001 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 101010 -> Bucket [Keys: ] (Local Depth: 5)
+  Index 101011 -> Bucket [Keys: ] (Local Depth: 5)
+  Index 101100 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 101101 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 101110 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 101111 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 110000 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 110001 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 110010 -> Bucket [Keys: ] (Local Depth: 4)
+  Index 110011 -> Bucket [Keys: ] (Local Depth: 4)
+  Index 110100 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 110101 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 110110 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 110111 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 111000 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 111001 -> Bucket [Keys: key7 key4 ] (Local Depth: 3)
+  Index 111010 -> Bucket [Keys: key2 ] (Local Depth: 6)
+  Index 111011 -> Bucket [Keys: key2 ] (Local Depth: 6)
+  Index 111100 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 111101 -> Bucket [Keys: key3 ] (Local Depth: 3)
+  Index 111110 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+  Index 111111 -> Bucket [Keys: key6 key1 ] (Local Depth: 3)
+[2024-11-28 08:37:27] Response: SET operation successful
+
+[2024-11-28 08:39:46] Received Command: SET
+Arguments: key1 val1 key2 val2 
+[2024-11-28 08:39:46] Inserted: Key = key1, Value = val1
+[2024-11-28 08:39:46] Inserted: Key = key2, Value = val2
+[2024-11-28 08:39:46] Hash Table After SET:
+
+Global Depth: 1
+Directory:
+  Index 0 -> Bucket [Keys: key2 key1 ] (Local Depth: 1)
+  Index 1 -> Bucket [Keys: key2 key1 ] (Local Depth: 1)
+[2024-11-28 08:39:46] Response: SET operation successful
+
+[2024-11-28 08:40:57] Received Command: SET
+Arguments: key11 val1 key21 val2 key31 val4 gg ml 
+[2024-11-28 08:40:57] Inserted: Key = key11, Value = val1
+[2024-11-28 08:40:57] Inserted: Key = key21, Value = val2
+[2024-11-28 08:40:57] Inserted: Key = key31, Value = val4
+[2024-11-28 08:40:57] Inserted: Key = gg, Value = ml
+[2024-11-28 08:40:57] Hash Table After SET:
+
+Global Depth: 4
+Directory:
+  Index 0000 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 0001 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 0010 -> Bucket [Keys: gg key11 ] (Local Depth: 4)
+  Index 0011 -> Bucket [Keys: gg key11 ] (Local Depth: 4)
+  Index 0100 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 0101 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 0110 -> Bucket [Keys: key1 ] (Local Depth: 3)
+  Index 0111 -> Bucket [Keys: key1 ] (Local Depth: 3)
+  Index 1000 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 1001 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 1010 -> Bucket [Keys: key2 ] (Local Depth: 4)
+  Index 1011 -> Bucket [Keys: key2 ] (Local Depth: 4)
+  Index 1100 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 1101 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 1110 -> Bucket [Keys: key1 ] (Local Depth: 3)
+  Index 1111 -> Bucket [Keys: key1 ] (Local Depth: 3)
+[2024-11-28 08:40:57] Response: SET operation successful
+
+[2024-11-28 08:41:15] Received Command: DEL
+Arguments: gg 
+[2024-11-28 08:41:15] Deleting key: gg
+[2024-11-28 08:41:15] Hash Table After DEL:
+
+Global Depth: 4
+Directory:
+  Index 0000 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 0001 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 0010 -> Bucket [Keys: key11 ] (Local Depth: 4)
+  Index 0011 -> Bucket [Keys: key11 ] (Local Depth: 4)
+  Index 0100 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 0101 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 0110 -> Bucket [Keys: key1 ] (Local Depth: 3)
+  Index 0111 -> Bucket [Keys: key1 ] (Local Depth: 3)
+  Index 1000 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 1001 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 1010 -> Bucket [Keys: key2 ] (Local Depth: 4)
+  Index 1011 -> Bucket [Keys: key2 ] (Local Depth: 4)
+  Index 1100 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 1101 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 1110 -> Bucket [Keys: key1 ] (Local Depth: 3)
+  Index 1111 -> Bucket [Keys: key1 ] (Local Depth: 3)
+[2024-11-28 08:41:15] Response: DEL operation acknowledged
+
+[2024-11-28 08:41:24] Received Command: DEL
+Arguments: gg 
+[2024-11-28 08:41:24] Deleting key: gg
+[2024-11-28 08:41:24] Hash Table After DEL:
+
+Global Depth: 4
+Directory:
+  Index 0000 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 0001 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 0010 -> Bucket [Keys: key11 ] (Local Depth: 4)
+  Index 0011 -> Bucket [Keys: key11 ] (Local Depth: 4)
+  Index 0100 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 0101 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 0110 -> Bucket [Keys: key1 ] (Local Depth: 3)
+  Index 0111 -> Bucket [Keys: key1 ] (Local Depth: 3)
+  Index 1000 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 1001 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 1010 -> Bucket [Keys: key2 ] (Local Depth: 4)
+  Index 1011 -> Bucket [Keys: key2 ] (Local Depth: 4)
+  Index 1100 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 1101 -> Bucket [Keys: key31 key21 ] (Local Depth: 2)
+  Index 1110 -> Bucket [Keys: key1 ] (Local Depth: 3)
+  Index 1111 -> Bucket [Keys: key1 ] (Local Depth: 3)
+[2024-11-28 08:41:24] Response: DEL operation acknowledged
+
+[2024-11-28 08:41:44] Received Command: GET
+Arguments: gg 
+[2024-11-28 08:41:44] Response: Error: Key not found
 

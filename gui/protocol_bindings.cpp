@@ -15,9 +15,11 @@ PYBIND11_MODULE(protocol, m) {
        "Encode a command and arguments into a binary format.");
 
     // Expose decodeMessage
-    m.def("decode_message", [](const std::string &message) {
-        std::vector<Byte> binary(message.begin(), message.end());
-        return Protocol::decodeMessage(binary);
+    m.def("decode_message", [](const py::bytes &message) {
+        std::string str_message = message;
+        std::vector<Byte> binary(str_message.begin(), str_message.end());
+        auto [command, args] = Protocol::decodeMessage(binary);
+        return py::make_tuple(command, args);
     }, py::arg("message"),
        "Decode a binary message into a command and arguments.");
 
@@ -29,9 +31,11 @@ PYBIND11_MODULE(protocol, m) {
        "Encode a response into a binary format.");
 
     // Expose decodeResponse
-    m.def("decode_response", [](const std::string &response) {
-        std::vector<Byte> binary(response.begin(), response.end());
-        return Protocol::decodeResponse(binary);
+    m.def("decode_response", [](const py::bytes &response) {
+        std::string str_response = response;
+        std::vector<Byte> binary(str_response.begin(), str_response.end());
+        auto [status, data] = Protocol::decodeResponse(binary);
+        return py::make_tuple(status, data);
     }, py::arg("response"),
        "Decode a binary response into status and data.");
 }
