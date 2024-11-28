@@ -69,3 +69,52 @@ Arguments: key1
 Arguments: k 
 [2024-11-28 07:32:14] Response: Error: Key not found
 
+[2024-11-28 07:38:01] Received Command: SET
+Arguments: ke jk 
+[2024-11-28 07:38:01] Inserted: Key = ke, Value = jk
+[2024-11-28 07:38:01] Hash Table After SET:
+
+Global Depth: 1
+Directory:
+  Index 0 -> Bucket [Keys: ke ] (Local Depth: 1)
+  Index 1 -> Bucket [Keys: ke ] (Local Depth: 1)
+[2024-11-28 07:38:01] Response: SET operation successful
+
+[2024-11-28 07:38:26] Received Command: SET
+Arguments: rt op 
+[2024-11-28 07:38:26] Inserted: Key = rt, Value = op
+[2024-11-28 07:38:26] Hash Table After SET:
+
+Global Depth: 1
+Directory:
+  Index 0 -> Bucket [Keys: rt ke ] (Local Depth: 1)
+  Index 1 -> Bucket [Keys: rt ke ] (Local Depth: 1)
+[2024-11-28 07:38:26] Response: SET operation successful
+
+[2024-11-28 07:38:48] Received Command: SET
+Arguments: rts ops key3 value5 key4 valk 
+[2024-11-28 07:38:48] Inserted: Key = rts, Value = ops
+[2024-11-28 07:38:48] Inserted: Key = key3, Value = value5
+[2024-11-28 07:38:48] Inserted: Key = key4, Value = valk
+[2024-11-28 07:38:48] Hash Table After SET:
+
+Global Depth: 3
+Directory:
+  Index 000 -> Bucket [Keys: key4 rts ] (Local Depth: 3)
+  Index 001 -> Bucket [Keys: key4 rts ] (Local Depth: 3)
+  Index 010 -> Bucket [Keys: rt ] (Local Depth: 2)
+  Index 011 -> Bucket [Keys: rt ] (Local Depth: 2)
+  Index 100 -> Bucket [Keys: key3 ke ] (Local Depth: 3)
+  Index 101 -> Bucket [Keys: key3 ke ] (Local Depth: 3)
+  Index 110 -> Bucket [Keys: rt ] (Local Depth: 2)
+  Index 111 -> Bucket [Keys: rt ] (Local Depth: 2)
+[2024-11-28 07:38:48] Response: SET operation successful
+
+[2024-11-28 07:39:07] Received Command: GET
+Arguments: re 
+[2024-11-28 07:39:07] Response: Error: Key not found
+
+[2024-11-28 07:39:18] Received Command: GET
+Arguments: rt 
+[2024-11-28 07:39:18] Response: GET operation successful: op
+
