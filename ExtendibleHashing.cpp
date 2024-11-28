@@ -1,6 +1,19 @@
 #include "ExtendibleHashing.h"
 #include <functional>
 
+// FNV-1a Hash Function
+unsigned int fnv1aHash(const std::string& key) {
+    const unsigned int FNV_PRIME = 16777619u;
+    const unsigned int OFFSET_BASIS = 2166136261u;
+
+    unsigned int hash = OFFSET_BASIS;
+    for (char c : key) {
+        hash ^= static_cast<unsigned int>(c);
+        hash *= FNV_PRIME;
+    }
+    return hash;
+}
+
 // Bucket class implementation
 Bucket::Bucket(int depth) : localDepth(depth) {}
 
@@ -47,8 +60,7 @@ ExtendibleHashing::~ExtendibleHashing() {
 }
 
 int ExtendibleHashing::hash(const std::string& key) {
-    std::hash<std::string> hasher;
-    return hasher(key) & ((1 << globalDepth) - 1); // Extract globalDepth bits
+    return fnv1aHash(key) & ((1 << globalDepth) - 1); // Extract globalDepth bits
 }
 
 void ExtendibleHashing::splitBucket(int index) {
@@ -77,7 +89,7 @@ void ExtendibleHashing::splitBucket(int index) {
 
     for (const auto& [key, value] : oldKeyValuePairs) {
         int hashValue = hash(key);
-        if ((hashValue & (1 << oldLocalDepth)) == 0) {
+        if ((hashValue & (1 << (oldLocalDepth))) == 0) {
             oldBucket->insert(key, value);
         } else {
             newBucket->insert(key, value);
@@ -117,16 +129,15 @@ bool ExtendibleHashing::search(const std::string& key, std::string& value) {
 }
 
 void ExtendibleHashing::remove(const std::string& key) {
-    // int hashValue = hash(key);
-    // Bucket* bucket = directory[hashValue];
+    int hashValue = hash(key);
+    Bucket* bucket = directory[hashValue];
 
-    // if (bucket->contains(key)) {
-    //     bucket->remove(key);
-    //     std::cout << "Key " << key << " removed from the hash table.\n";
-    // } else {
-    //     std::cout << "Key " << key << " not found in the hash table.\n";
-    // }
-    std::cout << key << "marked for deletion" << std::endl;
+    if (bucket->contains(key)) {
+        bucket->remove(key);
+        std::cout << "Key " << key << " removed from the hash table.\n";
+    } else {
+        std::cout << "Key " << key << " not found in the hash table.\n";
+    }
 }
 
 void ExtendibleHashing::print() {
