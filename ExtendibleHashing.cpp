@@ -1,4 +1,5 @@
 #include "ExtendibleHashing.h"
+#include <functional>
 
 // Bucket class implementation
 Bucket::Bucket(int depth) : localDepth(depth) {}
@@ -7,19 +8,19 @@ bool Bucket::isFull() const {
     return keyValuePairs.size() >= BUCKET_SIZE;
 }
 
-void Bucket::insert(int key, const std::string& value) {
+void Bucket::insert(const std::string& key, const std::string& value) {
     keyValuePairs[key] = value; // Add or update the key-value pair
 }
 
-bool Bucket::contains(int key) const {
+bool Bucket::contains(const std::string& key) const {
     return keyValuePairs.find(key) != keyValuePairs.end();
 }
 
-std::string Bucket::getValue(int key) const {
+std::string Bucket::getValue(const std::string& key) const {
     return keyValuePairs.at(key); // Retrieve the value for the given key
 }
 
-void Bucket::remove(int key) {
+void Bucket::remove(const std::string& key) {
     keyValuePairs.erase(key); // Remove the key-value pair
 }
 
@@ -45,8 +46,9 @@ ExtendibleHashing::~ExtendibleHashing() {
     }
 }
 
-int ExtendibleHashing::hash(int key) {
-    return key & ((1 << globalDepth) - 1); // Extract globalDepth bits
+int ExtendibleHashing::hash(const std::string& key) {
+    std::hash<std::string> hasher;
+    return hasher(key) & ((1 << globalDepth) - 1); // Extract globalDepth bits
 }
 
 void ExtendibleHashing::splitBucket(int index) {
@@ -90,7 +92,7 @@ void ExtendibleHashing::splitBucket(int index) {
     }
 }
 
-void ExtendibleHashing::insert(int key, const std::string& value) {
+void ExtendibleHashing::insert(const std::string& key, const std::string& value) {
     int hashValue = hash(key);
     Bucket* bucket = directory[hashValue];
 
@@ -102,7 +104,7 @@ void ExtendibleHashing::insert(int key, const std::string& value) {
     }
 }
 
-bool ExtendibleHashing::search(int key, std::string& value) {
+bool ExtendibleHashing::search(const std::string& key, std::string& value) {
     int hashValue = hash(key);
     Bucket* bucket = directory[hashValue];
 
@@ -114,8 +116,7 @@ bool ExtendibleHashing::search(int key, std::string& value) {
     }
 }
 
-void ExtendibleHashing::remove(int key) {
-    std::cout << key << " marked for deletion" << std::endl;
+void ExtendibleHashing::remove(const std::string& key) {
     // int hashValue = hash(key);
     // Bucket* bucket = directory[hashValue];
 
@@ -125,6 +126,7 @@ void ExtendibleHashing::remove(int key) {
     // } else {
     //     std::cout << "Key " << key << " not found in the hash table.\n";
     // }
+    std::cout << key << "marked for deletion" << std::endl;
 }
 
 void ExtendibleHashing::print() {
